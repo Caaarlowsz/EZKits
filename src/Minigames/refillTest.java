@@ -11,14 +11,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import Main.Main;
 import Utils.KitAPI;
 
-
-public class refillTest{
+public class refillTest {
 	Random rand = new Random();
 
 	public refillTest(Player p) {
-		if (KitAPI.refillTest.contains(p.getName())){
+		if (KitAPI.refillTest.contains(p.getName())) {
 			p.sendMessage("§6§lEZKits §fVocê ká está em um treino");
-			return ;
+			return;
 		}
 		new BukkitRunnable() {
 			int seconds = 5;
@@ -47,7 +46,8 @@ public class refillTest{
 
 				if (hasRefiled(p)) {
 					p.setExp(0);
-					p.sendMessage("§6§lEZKits §7Você terminou seu refiltest , ele foi feito em §c" + Stringtimer.timerChecker(KitAPI.refillTestTime.get(p.getName())));
+					p.sendMessage("§6§lEZKits §7Você terminou seu refiltest , ele foi feito em §c"
+							+ Stringtimer.timerChecker(KitAPI.refillTestTime.get(p.getName())));
 					KitAPI.RemoveKit(p);
 					p.teleport(Bukkit.getWorld("world").getSpawnLocation());
 					KitAPI.inicial(p);
@@ -61,7 +61,7 @@ public class refillTest{
 				if (!KitAPI.refillTest.contains(p.getName()) && seconds < 0) {
 					this.cancel();
 				}
-				
+
 				if (seconds >= 60) {
 					p.sendMessage("§6§lEZKits §cSe passou 1 minuto e você não terminou o refil , teste cancelado");
 					this.cancel();
@@ -78,9 +78,9 @@ public class refillTest{
 	}
 
 	private boolean hasRefiled(Player p) {
-		
+
 		try {
-			
+
 			if (p.getInventory().getItem(0).getType() == Material.AIR) {
 				return false;
 			}
@@ -108,7 +108,7 @@ public class refillTest{
 			if (p.getInventory().getItem(8).getType() == Material.AIR) {
 				return false;
 			}
-			
+
 		} catch (Exception e) {
 			return false;
 		}

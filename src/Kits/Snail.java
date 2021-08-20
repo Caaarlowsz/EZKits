@@ -12,16 +12,16 @@ import org.bukkit.potion.PotionEffectType;
 
 import Utils.KitAPI;
 
-public class Snail implements Listener{
-	
+public class Snail implements Listener {
+
 	@EventHandler
 	public void bater(EntityDamageByEntityEvent e) {
 		if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
-			Player p = (Player)e.getEntity();
-			Player t = (Player)e.getDamager();
+			Player p = (Player) e.getEntity();
+			Player t = (Player) e.getDamager();
 			if ((KitAPI.getKit(t) == "Snail") && (p.getItemInHand().getType() == Material.STONE_SWORD)) {
 				if (new Random().nextInt(100) < 50) {
-					p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5*20, 1), true);
+					p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5 * 20, 1), true);
 				}
 			}
 		}

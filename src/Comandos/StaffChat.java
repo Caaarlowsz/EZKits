@@ -6,16 +6,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class StaffChat implements CommandExecutor{
-	
+public class StaffChat implements CommandExecutor {
+
 	@SuppressWarnings("deprecation")
 	@Override
-	 public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Para usar isso tem que ser um player");
 			return true;
 		}
-		Player p = (Player)sender;
+		Player p = (Player) sender;
 		if (!(p.hasPermission("ezkits.admin"))) {
 			p.sendMessage("§cSem Permissão");
 			return true;
@@ -23,12 +23,12 @@ public class StaffChat implements CommandExecutor{
 		if (args.length == 0) {
 			p.sendMessage("§c Use /staffchat ou /sc ");
 			return true;
-		}else {
+		} else {
 			String message = "";
 			for (int i = 0; i < args.length; i++) {
 				if (i == args.length - 1) {
 					message = message + args[i];
-				}else {
+				} else {
 					message = message + args[i] + " ";
 				}
 			}

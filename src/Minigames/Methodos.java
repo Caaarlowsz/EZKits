@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.v1_7_R4.EntityVillager;
-import net.minecraft.server.v1_7_R4.PacketPlayOutSpawnEntityLiving;
-import net.minecraft.server.v1_7_R4.WorldServer;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -27,6 +23,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 
+import net.minecraft.server.v1_7_R4.EntityVillager;
+import net.minecraft.server.v1_7_R4.PacketPlayOutSpawnEntityLiving;
+import net.minecraft.server.v1_7_R4.WorldServer;
+
 public class Methodos {
 
 	public static void registerEvents(Listener classe, Plugin main) {
@@ -44,8 +44,7 @@ public class Methodos {
 
 	public static void spawnFirework(Location loc) {
 
-		Firework fw = (Firework) loc.getWorld().spawnEntity(loc,
-				EntityType.FIREWORK);
+		Firework fw = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
 		FireworkMeta fwm = fw.getFireworkMeta();
 		Random r = new Random();
 		int rt = r.nextInt(4) + 1;
@@ -68,8 +67,7 @@ public class Methodos {
 		Color c1 = Color.RED;
 		Color c2 = Color.YELLOW;
 		Color c3 = Color.ORANGE;
-		FireworkEffect effect = FireworkEffect.builder()
-				.flicker(r.nextBoolean()).withColor(c1).withColor(c2)
+		FireworkEffect effect = FireworkEffect.builder().flicker(r.nextBoolean()).withColor(c1).withColor(c2)
 				.withFade(c3).with(type).trail(r.nextBoolean()).build();
 		fwm.addEffect(effect);
 		fwm.setPower(1);
@@ -85,9 +83,8 @@ public class Methodos {
 		return item;
 	}
 
-	public static void fillLinhaInventory(Inventory inv, int fristSlot,
-			ItemStack slot1, ItemStack slot2, ItemStack slot3, ItemStack slot4,
-			ItemStack slot5, ItemStack slot6, ItemStack slot7, ItemStack slot8,
+	public static void fillLinhaInventory(Inventory inv, int fristSlot, ItemStack slot1, ItemStack slot2,
+			ItemStack slot3, ItemStack slot4, ItemStack slot5, ItemStack slot6, ItemStack slot7, ItemStack slot8,
 			ItemStack slot9) {
 		inv.setItem(fristSlot, slot1);
 		inv.setItem(fristSlot + 1, slot2);
@@ -100,8 +97,7 @@ public class Methodos {
 		inv.setItem(fristSlot + 8, slot9);
 	}
 
-	public static ItemStack itemStack(Material material, String nome,
-			String lore) {
+	public static ItemStack itemStack(Material material, String nome, String lore) {
 		ItemStack item = new ItemStack(material);
 		ItemMeta itemmeta = item.getItemMeta();
 		List<String> iteml = new ArrayList<>();
@@ -114,28 +110,24 @@ public class Methodos {
 
 	@SuppressWarnings("deprecation")
 	public static void spawnNpc(Location loc, Player player, String name) {
-		WorldServer world = ((org.bukkit.craftbukkit.v1_7_R4.CraftWorld) loc
-				.getWorld()).getHandle();
+		WorldServer world = ((org.bukkit.craftbukkit.v1_7_R4.CraftWorld) loc.getWorld()).getHandle();
 
 		EntityVillager villager = new EntityVillager(world);
 
 		villager.setCustomName(name);
 		villager.setCustomNameVisible(true);
 
-		villager.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(),
-				loc.getPitch());
+		villager.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 
-		PacketPlayOutSpawnEntityLiving packedt = new PacketPlayOutSpawnEntityLiving(
-				villager);
+		PacketPlayOutSpawnEntityLiving packedt = new PacketPlayOutSpawnEntityLiving(villager);
 
 		for (Player all : Bukkit.getOnlinePlayers()) {
-			((CraftPlayer) all).getHandle().playerConnection
-					.sendPacket(packedt);
+			((CraftPlayer) all).getHandle().playerConnection.sendPacket(packedt);
 		}
 	}
 
-	public static ItemStack itemStack(Material material, String nome,
-			String lore, Enchantment enchant, int levelEnchant) {
+	public static ItemStack itemStack(Material material, String nome, String lore, Enchantment enchant,
+			int levelEnchant) {
 		ItemStack item = new ItemStack(material);
 		item.addUnsafeEnchantment(enchant, levelEnchant);
 		ItemMeta itemmeta = item.getItemMeta();
@@ -147,8 +139,7 @@ public class Methodos {
 		return item;
 	}
 
-	public static ItemStack itemStack(Material material, String nome,
-			List<String> lore) {
+	public static ItemStack itemStack(Material material, String nome, List<String> lore) {
 		ItemStack item = new ItemStack(material);
 		ItemMeta itemmeta = item.getItemMeta();
 		itemmeta.setLore(lore);
@@ -157,8 +148,7 @@ public class Methodos {
 		return item;
 	}
 
-	public static ItemStack itemStack(Material material, String nome,
-			int amount, int durability) {
+	public static ItemStack itemStack(Material material, String nome, int amount, int durability) {
 		ItemStack item = new ItemStack(material, amount, (short) durability);
 		ItemMeta itemmeta = item.getItemMeta();
 		itemmeta.setDisplayName(nome);
@@ -166,8 +156,7 @@ public class Methodos {
 		return item;
 	}
 
-	public static ItemStack itemStack(Material material, String nome,
-			int amount, int durability, List<String> lore) {
+	public static ItemStack itemStack(Material material, String nome, int amount, int durability, List<String> lore) {
 		ItemStack item = new ItemStack(material, amount, (short) durability);
 		ItemMeta itemmeta = item.getItemMeta();
 		itemmeta.setLore(lore);
@@ -176,10 +165,8 @@ public class Methodos {
 		return item;
 	}
 
-	public static ItemStack headStack(String namePlayer, String displayName,
-			List<String> lore) {
-		ItemStack item = new ItemStack(Material.SKULL_ITEM, 1,
-				(short) SkullType.PLAYER.ordinal());
+	public static ItemStack headStack(String namePlayer, String displayName, List<String> lore) {
+		ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
 		SkullMeta itemmeta = (SkullMeta) item.getItemMeta();
 		itemmeta.setLore(lore);
 		itemmeta.setOwner(namePlayer);

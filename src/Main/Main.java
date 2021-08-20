@@ -53,29 +53,27 @@ import Warps.SetChallenge;
 import Warps.SetFPS;
 import Warps.SetSpawn;
 
-public class Main extends JavaPlugin{
-	
-	
-	
+public class Main extends JavaPlugin {
+
 	public static ArrayList<String> score = new ArrayList<>();
-	
+
 	public static Main plugin;
+
 	public static Main getPlugin() {
 		return plugin;
 	}
-	
+
 	public static Main instance;
+
 	public static Main getInstance() {
 		return instance;
 	}
-	
+
 	public File stats1;
 	public YamlConfiguration stats;
 
-
-	
 	public void onEnable() {
-		instance =  this;
+		instance = this;
 		plugin = this;
 		saveDefaultConfig();
 		RegisterEvents();
@@ -88,13 +86,9 @@ public class Main extends JavaPlugin{
 		stats1 = new File(getDataFolder(), "stats.yml");
 		this.stats = YamlConfiguration.loadConfiguration(stats1);
 		save();
-		
+
 	}
-	
-	
-	
-	
-	
+
 	public void RegisterEvents() {
 		Bukkit.getServer().getPluginManager().registerEvents(new Viking(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new C4(this), this);
@@ -103,7 +97,7 @@ public class Main extends JavaPlugin{
 		Bukkit.getServer().getPluginManager().registerEvents(new CustomTab(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new Ninja(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new ItemQuebrar(), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new Admin(), this);		
+		Bukkit.getServer().getPluginManager().registerEvents(new Admin(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new Fisherman(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new Stomper(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new Entrou(), this);
@@ -128,16 +122,14 @@ public class Main extends JavaPlugin{
 		Bukkit.getServer().getPluginManager().registerEvents(new GUI.Menu(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new SetSpawn(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new ForceField(this), this);
-		
-		
-
 
 	}
-	
+
 	public void Comandos() {
 		getCommand("surprise").setExecutor(new Surprise(this));
 		getCommand("clearchat").setExecutor(new ClearChat());
-		getCommand("menu").setExecutor(new GUI.Menu());;
+		getCommand("menu").setExecutor(new GUI.Menu());
+		;
 		getCommand("gm").setExecutor(new Gm());
 		getCommand("staffchat").setExecutor(new StaffChat());
 		getCommand("build").setExecutor(new Build());
@@ -153,12 +145,10 @@ public class Main extends JavaPlugin{
 		getCommand("challenge").setExecutor(new Challenge(this));
 		getCommand("setchallenge").setExecutor(new SetChallenge(this));
 		getCommand("setSpawn").setExecutor(new SetSpawn(this));
-	    getCommand("spawn").setExecutor(new SetSpawn(this));
-		
-		
-		
-		
-	}	
+		getCommand("spawn").setExecutor(new SetSpawn(this));
+
+	}
+
 	public static void Segundo1() {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
 			@SuppressWarnings("deprecation")
@@ -171,11 +161,11 @@ public class Main extends JavaPlugin{
 						Ninja.NinjaTime.put(s.getName(), Ninja.NinjaTime.get(s.getName()) - 1);
 					}
 				}
-				
+
 			}
 		}, 0, 20);
 	}
-	
+
 	public void save() {
 		try {
 			this.stats.save(this.stats1);
@@ -183,7 +173,5 @@ public class Main extends JavaPlugin{
 			e.printStackTrace();
 		}
 	}
-	
-}
-	
 
+}

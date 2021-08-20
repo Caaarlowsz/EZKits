@@ -9,13 +9,13 @@ import Outros.ScoreBoard;
 import Utils.KillDeathsMoney;
 import Utils.KitAPI;
 
-public class Matar implements Listener{
-	
+public class Matar implements Listener {
+
 	@EventHandler
 	public void Matanca(PlayerDeathEvent e) {
 		Player p = e.getEntity();
 		if (e.getEntity().getKiller() instanceof Player) {
-			Player t = (Player)p.getKiller();
+			Player t = (Player) p.getKiller();
 			KillDeathsMoney.addDeath(p);
 			KillDeathsMoney.removeMoney(p);
 			KillDeathsMoney.addKill(t);
@@ -28,7 +28,7 @@ public class Matar implements Listener{
 			p.sendMessage("§c§l -60");
 			t.sendMessage("§c§lVoce Matou o§b§l" + p.getDisplayName());
 			t.sendMessage("§c§l +100");
-		}else {
+		} else {
 			KitAPI.RemoveKit(p);
 			p.sendMessage("§c§lVoce Morreu");
 		}

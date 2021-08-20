@@ -7,8 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
-public class Plugin  implements Listener{
-	
+public class Plugin implements Listener {
+
 	@SuppressWarnings("rawtypes")
 	@EventHandler
 	public void onCommandPreProcess(PlayerCommandPreprocessEvent e) {
@@ -19,16 +19,16 @@ public class Plugin  implements Listener{
 		plugins.add("plugins");
 		plugins.add("?");
 		plugins.add("ver");
-		    for (String Loop : plugins) {
-		    	if (msg[0].equalsIgnoreCase("/" + Loop)) {
-		    		
-		    		e.getPlayer().sendMessage("§6§l=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-		    		e.getPlayer().sendMessage("§5§lPlugin Criado por EzequiasSales");
-		    		e.getPlayer().sendMessage("§6§l=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-		    		e.setCancelled(true);
-		    	}
-		    }
-		
+		for (String Loop : plugins) {
+			if (msg[0].equalsIgnoreCase("/" + Loop)) {
+
+				e.getPlayer().sendMessage("§6§l=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+				e.getPlayer().sendMessage("§5§lPlugin Criado por EzequiasSales");
+				e.getPlayer().sendMessage("§6§l=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+				e.setCancelled(true);
+			}
+		}
+
 	}
 
 }

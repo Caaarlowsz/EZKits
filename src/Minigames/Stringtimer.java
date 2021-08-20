@@ -7,11 +7,11 @@ public class Stringtimer {
 		int seconds = i % 60;
 		String disMinu = (minutes < 10 ? "" : "") + minutes;
 		String disSec;
-		if (seconds <= 9) 
+		if (seconds <= 9)
 			disSec = (seconds < 10 ? "" : "") + seconds;
-		else 
+		else
 			disSec = (seconds < 10 ? "0" : "") + seconds;
-		
+
 		String formattedTime;
 		if (minutes != 0)
 			formattedTime = disMinu + ":" + disSec;
